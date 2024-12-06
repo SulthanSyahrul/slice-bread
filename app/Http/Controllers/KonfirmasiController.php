@@ -12,12 +12,14 @@ class KonfirmasiController extends Controller
     // Method untuk menampilkan konfirmasi pesanan
     public function index()
     {
-        $id_pelanggan = Auth::id();
+
+        $id_pesanan = session('id_pesanan');
+
         // Ambil data pesanan berdasarkan ID pelanggan
-        $pesanan = Pesanan::where('id', $id_pelanggan)->first();
+        $pesanan = Pesanan::where('id', $id_pesanan)->first();
         
         // Ambil data keranjang berdasarkan ID pelanggan
-        $keranjangItems = DetailPesanan::where('id', $id_pelanggan)->with('produk')->get();
+        $keranjangItems = DetailPesanan::where('id_pesanan', $id_pesanan)->with('produk')->get();
 
         // Kirim data ke view
         return view('menu.rekapsemua', compact('pesanan', 'keranjangItems'));

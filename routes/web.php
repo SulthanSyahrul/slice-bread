@@ -7,6 +7,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\IsidataController;
 use App\Http\Controllers\TotalController;
 use App\Http\Controllers\KonfirmasiController;
+use App\Http\Controllers\PaymentController;
 
 Route::get('/login', [AuthController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [AuthController::class, 'authenticate']);
@@ -15,16 +16,13 @@ Route::post('/register', [AuthController::class, 'process'])->middleware('web');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
 Route::get('/reset', [AuthController::class, 'reset']);
 
-Route::get('/', [DashboardController::class, 'index']);
+Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 Route::get('/dashboard', [DashboardController::class, 'index']);
 
 Route::resource('/menu', ProdukController::class);
 
 Route::resource('/keranjang', KeranjangController::class);
 
-use App\Http\Controllers\PaymentController;
-
-Route::get('/payment/{id_pesanan}', [PaymentController::class, 'processPayment'])->name('payment.show');
 Route::get('/payment/create/{id_pesanan}', [PaymentController::class, 'createSnapToken'])->name('payment.create');
 Route::post('/payment/notification', [PaymentController::class, 'handleNotification']);
 
@@ -37,6 +35,9 @@ Route::resource('/konfirmasi', KonfirmasiController::class);
 
 Route::get('/cara', function () {
     return view('tampilan.cara');
+});
+Route::get('/riwayat', function () {
+    return view('tampilan.riwayat');
 });
 Route::get('/kontak', function () {
     return view('tampilan.kontak');

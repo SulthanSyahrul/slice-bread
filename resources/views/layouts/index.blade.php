@@ -27,6 +27,7 @@
             <div class="flex items-center space-x-6">
                 <a href="/menu" class="hover:text-[#faa005] {{ request()->is('menu*') ? 'text-[#faa005] font-bold' : '' }}">Menu</a>
                 <a href="/cara" class="hover:text-[#faa005] {{ request()->is('cara*') ? 'text-[#faa005] font-bold' : '' }}">Cara Order</a>
+                <a href="/riwayat" class="hover:text-[#faa005] {{ request()->is('riwayat*') ? 'text-[#faa005] font-bold' : '' }}">Riwayat</a>
                 <a href="/kontak" class="hover:text-[#faa005] {{ request()->is('kontak*') ? 'text-[#faa005] font-bold' : '' }}">Kontak</a>
             </div>
 

@@ -26,6 +26,11 @@ class KeranjangController extends Controller
         $id_produk = $validated['id_produk'];
         $quantity = $validated['quantity'] ?? 1; // Default ke 1 jika tidak ada input jumlah
 
+        $produk = Produk::find($id_produk);
+
+        if ($quantity > $produk->stock) {
+            return redirect()->back()->withErrors("Stok produk tidak mencukupi. Stok tersedia: {$produk->stock}");
+        }
         // Tambahkan item ke keranjang melalui CartManagement
         $cart_count = CartManagement::addItemToCartWithQty($id_produk, $quantity);
 
@@ -40,6 +45,12 @@ class KeranjangController extends Controller
 
         $quantity = $validated['quantity'];
 
+        $produk = Produk::find($product_id);
+
+        if ($quantity > $produk->stock) {
+            return redirect()->back()->withErrors("Stok produk tidak mencukupi. Stok tersedia: {$produk->stock}");
+        }
+        
         // Perbarui jumlah item di keranjang melalui CartManagement
         CartManagement::addItemToCartWithQty($product_id, $quantity);
 

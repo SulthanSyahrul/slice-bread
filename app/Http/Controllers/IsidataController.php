@@ -79,6 +79,8 @@ class IsidataController extends Controller
         // Hapus keranjang setelah pesanan dibuat
         CartManagement::clearCartItemsFromCookie();
 
-        return redirect('/menu/konfirmasi')->with('success', 'Pesanan berhasil disimpan.');
+        session(['id_pesanan' => $pesanan->id]);
+
+        return redirect('/konfirmasi')->with('success', 'Pesanan berhasil disimpan.');
     }
 }

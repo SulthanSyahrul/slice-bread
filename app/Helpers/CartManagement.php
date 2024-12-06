@@ -29,7 +29,7 @@ class CartManagement{
                 $cart_items[] = [
                     'id_produk' => $id_produk,
                     'name' => $product->name,
-                    'image' => $product->image[0],
+                    'image' => $product->image,
                     'quantity' => 1,
                     'unit_amount' => $product->price,
                     'total_amount' => $product->price
@@ -61,7 +61,7 @@ class CartManagement{
                 $cart_items[] = [
                     'id_produk' => $id_produk,
                     'name' => $product->name,
-                    'image' => $product->image[0],
+                    'image' => $product->image,
                     'quantity' => $qty,
                     'unit_amount' => $product->price,
                     'total_amount' => $qty * $product->price
