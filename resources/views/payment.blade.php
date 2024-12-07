@@ -43,16 +43,33 @@
             <!-- Payment Section -->
             <div class="bg-gray-50 p-6 rounded-lg shadow-md">
                 <h3 class="text-xl font-semibold text-gray-700 mb-4">Payment</h3>
-                <p class="text-gray-600 mb-6">Click the button below to proceed with the payment via Midtrans:</p>
-                <div class="flex justify-center">
-                    <button id="pay-button" 
-                        class="bg-gradient-to-r from-blue-500 to-purple-500 text-white px-6 py-3 rounded-lg shadow-lg hover:opacity-90 transition-all">
-                        Pay Now
-                    </button>
-                </div>
-                <p class="text-sm text-gray-500 mt-4 text-center">
-                    Powered by Midtrans. Secure and reliable payments.
-                </p>
+            
+                @if ($pesanan->status === 'success')
+                    <p class="text-green-600 mb-6 text-center font-semibold">
+                        Pesanan sudah dibayar, terima kasih!
+                    </p>
+                @elseif ($pesanan->status === 'expired')
+                    <p class="text-red-600 mb-6 text-center font-semibold">
+                        Pesanan telah kedaluwarsa. Silakan buat pesanan baru.
+                    </p>
+                @elseif ($pesanan->status === 'cancelled')
+                    <p class="text-red-600 mb-6 text-center font-semibold">
+                        Pesanan telah dibatalkan.
+                    </p>
+                @else
+                    <p class="text-gray-600 mb-6">
+                        Click the button below to proceed with the payment via Midtrans:
+                    </p>
+                    <div class="flex justify-center">
+                        <button id="pay-button" 
+                            class="bg-gradient-to-r from-blue-500 to-purple-500 text-white px-6 py-3 rounded-lg shadow-lg hover:opacity-90 transition-all">
+                            Pay Now
+                        </button>
+                    </div>
+                    <p class="text-sm text-gray-500 mt-4 text-center">
+                        Powered by Midtrans. Secure and reliable payments.
+                    </p>
+                @endif
             </div>
         </div>
     </div>
