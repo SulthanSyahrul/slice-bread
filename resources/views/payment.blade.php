@@ -87,7 +87,7 @@
                 onSuccess: function(result) {
                     alert('Payment success!');
                     // Redirect to dashboard after payment success
-                    window.location.href = '{{ route('dashboard') }}'; // Replace with your dashboard route
+                    window.location.reload(); 
                 },
                 onPending: function(result) {
                     alert('Waiting for payment confirmation');
