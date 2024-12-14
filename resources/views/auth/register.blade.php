@@ -11,9 +11,14 @@
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+    <!-- CAPTCHA -->
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> 
 </head>
 
 <body>
+    @include('sweetalert::alert')
     <div class="flex items-center justify-center min-h-screen gap-10 bg-gray-50 dark:bg-gray-900">
         <div class="font-bold justify-start">
             <span class="text-orange-500 text-8xl">S</span><span class="text-gray-800 text-6xl">lice</span><span
@@ -58,6 +63,15 @@
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                             required="">
                     </div>
+                    <div class="mb-3">
+                        <div class="g-recaptcha" 
+                             data-sitekey="{{ env('CAPTCHA_KEY') }}"
+                             data-theme="light">
+                        </div>
+                        @error('g-recaptcha-response')
+                            <span class="text-danger text-sm">{{ $message }}</span>
+                        @enderror
+                    </div>
                     <button type="submit"
                         class="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Buat
                         Akun</button>
@@ -69,6 +83,7 @@
             </div>
         </div>
     </div>
+    
 </body>
 
 </html>

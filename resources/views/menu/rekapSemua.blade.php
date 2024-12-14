@@ -80,7 +80,7 @@
                     </div>
                     <div class="flex justify-between">
                         <p class="text-gray-500">Subtotal</p>
-                        <p class="font-medium">Rp{{ number_format($pesanan->total_harga, 0, ',', '.') }}</p>
+                        <p class="font-medium">Rp{{ number_format($pesanan->subtotal, 0, ',', '.') }}</p>
                     </div>
                     <div class="flex justify-between">
                         <p class="text-gray-500">Diskon</p>
@@ -88,7 +88,7 @@
                     </div>
                     <div class="flex justify-between border-t border-gray-100 pt-2 mt-2">
                         <p class="font-semibold">Total</p>
-                        <p class="font-semibold">Rp{{ number_format($pesanan->total_harga, 0, ',', '.') }}</p>
+                        <p class="font-semibold">Rp{{ number_format($pesanan->subtotal, 0, ',', '.') }}</p>
                     </div>
                 </div>
             </div>
@@ -99,11 +99,9 @@
             <a href="{{ route('isidata.edit', $pesanan->id) }}" class="px-6 py-3 border border-gray-300 rounded-lg hover:bg-gray-50 font-medium">
                 Ubah Pesanan
             </a>    
-            <a href="{{ route('payment.create', ['id_pesanan' => $pesanan->id]) }}">
-                <button class="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 font-medium">
-                    Konfirmasi & Bayar
-                </button>
-            </a>            
+            <button class="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 font-medium">
+                Konfirmasi & Bayar
+            </button>
         </div>
     </div>
 @endsection

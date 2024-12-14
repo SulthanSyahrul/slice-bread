@@ -12,8 +12,6 @@ class VerifyCsrfToken extends Middleware
      * @var array<int, string>
      */
     protected $except = [
-        '/payment/notification',
-        'http://127.0.0.1:8000/payment/notification',
-        'http://127.0.0.1:8001/payment/notification',
+        //
     ];
 }

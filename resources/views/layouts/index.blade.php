@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Slice Bread Bakery</title>
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
 </head>
@@ -25,10 +27,15 @@
         <!-- Navigation Section - Pushed to right -->
         <nav class="flex items-center space-x-8 px-20">
             <div class="flex items-center space-x-6">
-                <a href="/menu" class="hover:text-[#faa005] {{ request()->is('menu*') ? 'text-[#faa005] font-bold' : '' }}">Menu</a>
-                <a href="/cara" class="hover:text-[#faa005] {{ request()->is('cara*') ? 'text-[#faa005] font-bold' : '' }}">Cara Order</a>
-                <a href="/riwayat" class="hover:text-[#faa005] {{ request()->is('riwayat*') ? 'text-[#faa005] font-bold' : '' }}">Riwayat</a>
-                <a href="/kontak" class="hover:text-[#faa005] {{ request()->is('kontak*') ? 'text-[#faa005] font-bold' : '' }}">Kontak</a>
+                <a href="/menu"
+                    class="hover:text-[#faa005] {{ request()->is('menu*') ? 'text-[#faa005] font-bold' : '' }}">Menu</a>
+                <a href="/cara"
+                    class="hover:text-[#faa005] {{ request()->is('cara*') ? 'text-[#faa005] font-bold' : '' }}">Cara
+                    Order</a>
+                <a href="/riwayat"
+                    class="hover:text-[#faa005] {{ request()->is('riwayat*') ? 'text-[#faa005] font-bold' : '' }}">Riwayat</a>
+                <a href="/kontak"
+                    class="hover:text-[#faa005] {{ request()->is('kontak*') ? 'text-[#faa005] font-bold' : '' }}">Kontak</a>
             </div>
 
             <label for="cartToggle" class="cursor-pointer mt-2">
@@ -42,19 +49,19 @@
             </label>
 
             @auth
-                <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="m-0 p-0 inline-block">
                     @csrf
-                    <button type="submit" class="bg-[#FFA500] text-black font-bold px-5 py-2 text-sm rounded-[27px] hover:bg-[#ed7d05]">
+                    <button type="submit"
+                        class="bg-[#ff0000] text-black font-bold px-5 py-2 text-sm rounded-[27px] hover:bg-[#ed7d05] inline-flex items-center">
                         Logout
                     </button>
                 </form>
             @else
-                <a href="/login" class="bg-[#FFA500] text-black font-bold px-5 py-2 text-sm rounded-[27px] hover:bg-[#ed7d05]">
+                <a href="/login"
+                    class="bg-[#FFA500] text-black font-bold px-5 py-2 text-sm rounded-[27px] hover:bg-[#ed7d05] inline-flex items-center">
                     Login
                 </a>
-                @endauth
-        
-             
+            @endauth
 
             <!-- Mobile Menu Button -->
             <ion-icon onclick="onToggleMenu(this)" name="menu" class="text-3xl cursor-pointer md:hidden"></ion-icon>
@@ -80,7 +87,8 @@
                                 <p class="font-medium">{{ $item['name'] }}</p>
                                 <p class="text-gray-500">Rp{{ number_format($item['unit_amount'], 0, ',', '.') }}</p>
                                 <p class="text-gray-500">Jumlah: {{ $item['quantity'] }}</p>
-                                <p class="text-gray-500">Total: Rp{{ number_format($item['total_amount'], 0, ',', '.') }}</p>
+                                <p class="text-gray-500">Total:
+                                    Rp{{ number_format($item['total_amount'], 0, ',', '.') }}</p>
                             </div>
                             <form action="{{ route('menu.destroy', $item['id_produk']) }}" method="POST">
                                 @csrf
@@ -92,22 +100,23 @@
                         <li class="text-center text-gray-500">Keranjang kosong</li>
                     @endforelse
                 </ul>
-                
+
                 <div class="mt-8">
                     @php
                     @endphp
                     <p class="text-base font-medium">Subtotal: Rp{{ number_format($subtotal, 0, ',', '.') }}</p>
                     <form action="/total" method="GET">
-                        <button type="submit" class="mt-4 w-full bg-indigo-600 text-white py-2 rounded hover:bg-indigo-700">
+                        <button type="submit"
+                            class="mt-4 w-full bg-indigo-600 text-white py-2 rounded hover:bg-indigo-700">
                             Checkout
                         </button>
                     </form>
                 </div>
-                
+
             </div>
         </div>
-    </div>    
-    </div>    
+    </div>
+    </div>
     </div>
 
     @yield('content')
@@ -226,6 +235,12 @@
             cartOverlay.classList.toggle('hidden');
         }
     }
+
+    Swal.fire({
+        icon: 'success',
+        title: 'Success',
+        text: 'Ini adalah pengujian manual.',
+    });
 </script>
 
 </html>

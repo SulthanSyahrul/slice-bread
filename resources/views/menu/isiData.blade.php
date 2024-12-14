@@ -56,6 +56,11 @@
                                     class="w-full h-14 border border-gray-300 rounded-lg px-4 focus:ring-blue-500 focus:border-blue-500">
                                     <option value="">Pilih Kab/Kota</option>
                                     <option value="Sragen">Sragen</option>
+                                    <option value="Karanganyar">Karangayar</option>
+                                    <option value="Surakarta">Surakarta</option>
+                                    <option value="Boyolali">Boyolali</option>
+                                    <option value="Sukoharjo">Sukoharjo</option>
+                                    <option value="Purwodadi">Purwodadi</option>
                                 </select>
                             </div>
                             <div>
@@ -65,11 +70,11 @@
                                     class="w-full h-14 border border-gray-300 rounded-lg px-4 focus:ring-blue-500 focus:border-blue-500">
                                     <option value="">Pilih Kecamatan</option>
                                     <option value="US">Sragen</option>
-                                    <option value="CA">Masaran</option>
-                                    <option value="FR">Karangmalang</option>
-                                    <option value="DE">Sidoharjo</option>
-                                    <option value="DE">Plupuh</option>
-                                    <option value="DE">Gemolong</option>
+                                    <option value="CA">Karangayar</option>
+                                    <option value="FR">Surakarta</option>
+                                    <option value="DE">Boyolali</option>
+                                    <option value="DE">Sukoharjo</option>
+                                    <option value="DE">Purwodadi</option>
                                 </select>
                             </div>
                         </div>
@@ -170,7 +175,7 @@
 
                     <input type="hidden" name="total_harga" value="{{ $total_harga }}">
 
-                    <button type="submit"
+                    <button href="/konfimasi" type="submit"
                         class="w-full h-14 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-800 focus:outline-none mt-4 flex items-center justify-center">
                         Konfirmasi Pesanan
                     </button>
